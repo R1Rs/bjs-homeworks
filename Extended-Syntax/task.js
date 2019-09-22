@@ -42,7 +42,7 @@ function getAverageMark(marks){
     let sum = 0;
     let arr5 = [];
     let averageMark = sum / count;
-    
+
     if (count > 5) {
         console.log("Количество оценок больше 5");
         arr5 = arr.slice(0, 6);
@@ -67,6 +67,15 @@ function calculateDrinkTask(){
 }
 
 function askDrink(name,dateOfBirthday){
+    let now = new Date();
+    let yearBirthday = dateOfBirthday.getFullYear;
+    let old = now.getFullYear - yearBirthday;
+    if (old >= 18) {
+        return(`Не желаете ли олд-фэшн, ${name}?`);
+    } else {
+        return(`Сожалею, ${name}, но я не могу вам продать алкоголь. Зато могу предложить вам замечательный клюквенный компот!`);
+    }
+
     // код для задачи №3 писать здесь
     //console.log(result)
     //return result;
