@@ -14,15 +14,12 @@ function getResult(a,b,c){
     let d = Math.pow(b, 2) - 4 * a * c;
     let arr = [];
     let x = arr;
-    if (d < 0) {
-        arr[0] = null;
-        arr[1] = null;
-    } else if (d = 0) {
+    if (d === 0) {
         arr[0] = (-b) / (2 * a);
         arr[1] = null;
-    } else {
-        arr[0] = (-b + Math.sqrt(d) / (2 * a));
-        arr[1] = (-b - Math.sqrt(d) / (2 * a));
+    } else if (d > 0) {
+        arr[0] = (-b + Math.sqrt(d)) / (2 * a);
+        arr[1] = (-b - Math.sqrt(d)) / (2 * a);
     }
 
     return x;
@@ -37,21 +34,21 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
-    let arr = [marks];
-    let count = arr.length;
+    let count = marks.length;
     let sum = 0;
     let arr5 = [];
     let averageMark = sum / count;
 
     if (count > 5) {
         console.log("Количество оценок больше 5");
-        arr5 = arr.slice(0, 6);
+        arr5 = marks.slice(0, 5);
     } else {
-        arr5 = arr;
+        arr5 = marks;
     }
     
     for (i = 0; i < arr5.length; i++) {
         sum += arr5[i];
+        return sum;
     }
 
     return averageMark;
@@ -68,8 +65,8 @@ function calculateDrinkTask(){
 
 function askDrink(name,dateOfBirthday){
     let now = new Date();
-    let yearBirthday = dateOfBirthday.getFullYear;
-    let old = now.getFullYear - yearBirthday;
+    let yearBirthday = dateOfBirthday.getFullYear();
+    let old = now.getFullYear() - yearBirthday;
     if (old >= 18) {
         return(`Не желаете ли олд-фэшн, ${name}?`);
     } else {
