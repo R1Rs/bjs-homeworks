@@ -13,7 +13,6 @@ function calculateQuadraticEquation(){
 function getResult(a,b,c){
     let d = Math.pow(b, 2) - 4 * a * c;
     let arr = [];
-    let x = arr;
     if (d === 0) {
         arr[0] = (-b) / (2 * a);
         arr[1] = null;
@@ -22,7 +21,7 @@ function getResult(a,b,c){
         arr[1] = (-b - Math.sqrt(d)) / (2 * a);
     }
 
-    return x;
+    return arr;
     // код для задачи №1 писать здесь
     //return x;
 }
@@ -34,11 +33,11 @@ function calculateAverageRating(){
 }
 
 function getAverageMark(marks){
+    debugger;
     let count = marks.length;
     let sum = 0;
     let arr5 = [];
-    let averageMark = sum / count;
-
+    
     if (count > 5) {
         console.log("Количество оценок больше 5");
         arr5 = marks.slice(0, 5);
@@ -48,10 +47,10 @@ function getAverageMark(marks){
     
     for (i = 0; i < arr5.length; i++) {
         sum += arr5[i];
-        return sum;
     }
-
+    let averageMark = sum / arr5.length;
     return averageMark;
+
     // код для задачи №2 писать здесь
     //return averageMark;
 }
