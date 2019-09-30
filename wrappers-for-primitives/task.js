@@ -1,3 +1,5 @@
+"use strict";
+
 function calculateMortgage() {
     let percent = window.percent.value;
     let contribution = window.contribution.value;
@@ -10,6 +12,9 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
+    let bodyCredit = amount - contribution;
+    let P = percent / 12;
+    let monthlyPayment = amount * (P + P / (Math.pow(1 + P, M))
 
     // код для задачи №1 писать здесь
     //return totalAmount;

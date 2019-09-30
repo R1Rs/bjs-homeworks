@@ -13,7 +13,22 @@ function getSolutions(a,b,c) {
 }
 
 function showSolutionsMessage(a,b,c) {
-    let result = {getSolutions};
+    let result = getSolutions(a,b,c);
     console.log(`Вычисляем корни квадратного уравнения ${a}x² + ${b}x + ${c}`);
     console.log(`Значение дискриминанта: ${result.D}`);
+    if (result.D < 0) {
+        console.log("Уровнение не имеет вещественных корней");
+    } else if (result.D === 0) {
+        console.log(`Уровнение имеет один корень X₁ = ${result.roots}`);
+    } else {
+        console.log(`Уравнение имеет два корня. X₁ = ${result.roots[0]}, X₂ = ${result.roots[1]}`);
+    }
+}
+
+// Второе задание меня совсем запутало. С чего начать?
+let data = {name: []};
+function getAverageScore(data) {
+    return {
+        name: []
+    }
 }
