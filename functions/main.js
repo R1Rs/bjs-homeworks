@@ -4,7 +4,7 @@ function getSolutions(a,b,c) {
         return {D: D};
     } else if (D === 0) {
         let x1 = (-b) / (2 * a);
-        return {roots: [x1], D: D}; // не понятно почему x1 возвращается как положительное число, если -b делает число отрицательным?
+        return {roots: [x1], D: D}; 
     } else {
         let x1 = (-b + Math.sqrt(D)) / (2 * a);
         let x2 = (-b - Math.sqrt(D)) / (2 * a);
@@ -25,7 +25,7 @@ function showSolutionsMessage(a,b,c) {
     }
 }
 
-// Второе задание меня совсем запутало. С чего начать?
+
 let data = {name: []};
 function getAverageScore(data) {
     return {
