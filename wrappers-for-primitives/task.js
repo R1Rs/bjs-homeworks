@@ -12,9 +12,24 @@ function calculateMortgage() {
 }
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
-    let bodyCredit = amount - contribution;
+    // проверка на корректность введенных данных
+    
+    if (typeof(percent) !== number) {
+        console.log(`Параметр <Процентная ставка> содержит неправильное значение <${percent}>.`);
+    }  else if (typeof(contribution) !== number) {
+        console.log(`Параметр <Начальный взнос> содержит неправильное значение <${contribution}>.`);
+    }  else if (typeof(amount) !== number) {
+        console.log(`Параметр <Процентная ставка> содержит неправильное значение <${amount}>.`);
+    }
+
+    let bodyCredit = amount - contribution; // сумма, которую необходимо вернуть в банк
     let P = percent / 12;
-    let monthlyPayment = amount * (P + P / (Math.pow(1 + P, M))
+    let now = new Date(); // текущая дата
+    let numberMonths = date - now; // расчёт срока в месяцах
+    let monthlyPayment = amount * (P + P / (Math.pow(1 + P, numberMonths)) - 1); //ежемесячная плата
+    let totalAmount = bodyCredit + monthlyPayment * numberMonths; // общая сумма, которую придется заплатить клиенту
+
+    return totalAmount;
 
     // код для задачи №1 писать здесь
     //return totalAmount;
@@ -28,6 +43,12 @@ function sayHello() {
 }
 
 function getGreeting(name) {
+    if (typeof(name) === String) {
+       return `Привет, Мир! Меня зовут ${name}`;
+    }  else {
+        return "Привет, Мир! Меня зовут Аноним";
+    }
+
     // код для задачи №2 писать здесь
     //return greeting;
 }
