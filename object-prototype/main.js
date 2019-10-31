@@ -7,7 +7,18 @@ function initCheckBirthday() {
 }
 
 function checkBirthday(birthday) {
-    // код для задачи №1 писать здесь
+    let now = Date.now(); // текущее время в миллисекундах
+    let birthday = Date.now(birthday); // дата рождения в мс
+    let diff = now - birthday; // разница дата 
+    let age = diff / 31536000000; // вычислиние количества лет
+// функция определения совершеннолетия
+    if (age >= 18) {
+        return "Совершеннолетний";
+     } else {
+            return "Несовершеннолетний";
+        }
+    }
+    // код для задачи №3 писать здесь
 }
 
 function initPrintAnimalSound() {
@@ -21,7 +32,13 @@ function initPrintAnimalSound() {
 }
 
 function getAnimalSound(animal) {
-    // код для задачи №2 писать здесь
+    let sound = Object.create(animal).sound; // переменная с присвоенными значениями прототипа
+    if (typeof(animal) === undefined) { 
+        return null;
+    }  else {
+        return sound; // возвращаем значение переменной
+    }
+    // код для задачи №1 писать здесь
 }
 
 function initCalculateStatement() {
@@ -35,5 +52,16 @@ function initCalculateStatement() {
 }
 
 function getAverageMark(marks) {
-    // код для задачи №3 писать здесь
+    let sum = 0;
+    // считаем и возвращаем сумму элементов в массиве
+    function getSum() {
+      for (i = 0; i < marks.length; i++) {
+          sum += arr[i];
+    } return sum; 
+    }
+
+    let average = sum / marks.length; // считаем среднее, разделив сумму на количество элементов в массиве
+    let roundedAverage = Math.round(average); // округляем до ближайшего целого
+    return roundedAverage;
+    // код для задачи №2 писать здесь
 }
