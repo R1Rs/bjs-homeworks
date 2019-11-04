@@ -1,3 +1,4 @@
+// Задание 1
 function getSolutions(a,b,c) {
     let D = Math.pow(b,2) - 4 * a * c;
     if (D < 0) {
@@ -25,9 +26,30 @@ function showSolutionsMessage(a,b,c) {
     }
 }
 
-function getAverageScore(...data) {
-
-    for (i = 0; i < data.length; i++) {
-      console.log(data[i][i]); 
+// Задание 2
+function getAverageScore(data) {
+    let average = 0,
+    i =0;
+    dataRes = {};
+    
+    if ( Object.keys(data).length < 10) {  
+        for (let prop in data) {
+         dataRes[prop] = averageCount(data[prop]);
+         average += averageCount(data[prop]);
+        i++;
     }
+    dataRes.average = Math.round(average/i);
+    return dataRes;
+    } else {
+      return "Слишком много предметов";
     }
+  }
+  
+  function averageCount( count ) {
+    let averageSub = 0;
+         for ( let i = 0; i < count.length; i++) {
+        averageSub += count [ i ];
+      }
+    return Math.round(averageSub/count.length);
+  }
+    
