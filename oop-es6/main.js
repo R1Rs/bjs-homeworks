@@ -39,7 +39,6 @@ const blade = new Weapon("Меч", 25, 500, 1);
 const knife = new Weapon("Нож", 5, 300, 1);
 const stick = new Weapon("Посох", 8, 300, 2);
 
-// ВОПРОС: как добавить версией чего является данное оружие? в таблице задания пишется что например longBow - версия лука.
 const longBow = new Weapon("Длинный лук", 15, bow.durability, 4);
 const axe = new Weapon("Секира", 27, 800, blade.range);
 const stickStorm = new Weapon("Посох Бури", 10, stick.durability, 3);
@@ -48,23 +47,85 @@ const stickStorm = new Weapon("Посох Бури", 10, stick.durability, 3);
 
 // Создание классов обычного вида оружия
 
-class Arm extends Weapon {}
-class Bow extends Weapon {}
-class Blade extends Weapon {}
-class Knife extends Weapon {}
-class Stick extends Weapon {}
-
+  class Arm extends Weapon {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Рука';
+      this.attack =  1;
+      this.durability =  Infinity;
+      this.range = 1;
+    }
+  }
+  class Bow extends Weapon {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Лук';
+      this.attack =  10;
+      this.durability =  200;
+      this.range = 3;
+    }
+  }
+  class Blade extends Weapon {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Меч';
+      this.attack =  25;
+      this.durability =  500;
+      this.range = 1;
+    }
+  }
+  class Knife extends Weapon {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Нож';
+      this.attack =  5;
+      this.durability =  300;
+      this.range = 1;
+    }
+  }
+  class Stick extends Weapon {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Посох';
+      this.attack =  8;
+      this.durability =  300;
+      this.range = 2;
+    }
+  }
+  
 // Создание классов усиленного вида оружия
 
-class LongBow extends Bow {}
-class Axe extends Blade {}
-class stickStorm extends Stick {}
+  class LongBow extends Bow {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Длинный лук';
+      this.attack =  15;
+      this.range = 4;
+    }
+  }
+  class Axe extends Blade {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Секира';
+      this.attack =  27;
+      this.durability =  800;
+    }
+  }
+  class LongBow extends Stick {
+    constructor(name, attack, durability, range) {
+      super (name, attack, durability, range);
+      this.name = 'Посох бури';
+      this.attack =  10;
+      this.range = 3;
+    }
+  }
 
 // Задание 3
 
 class StudentLog {
     constructor(name) {
         this.name = name;
+        this.marks = [];
     }
     getName() {
         return this.name;
@@ -84,7 +145,19 @@ class StudentLog {
             sum += this.grade[i];
         }   return sum / this.grade.length;
     }
-    getTotalAverage() {
-        // Не понял каким методом можно сложить все оценки по всем предметам. Просьба подсказать.
-    }
-}
+    
+    getToralAverage(){
+        let average  = 0;
+        if (this.marks.length === 0) {
+          return 0;
+        }
+          this.marks.forEach(function(item, i) {
+          average += (item.mark.reduce(function(sum, current){
+          return sum + current })) / item.mark.length;
+        })
+          return average / this.marks.length; 
+          }
+        }
+       
+    
+
