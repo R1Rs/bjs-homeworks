@@ -111,7 +111,7 @@ const stickStorm = new Weapon("Посох Бури", 10, stick.durability, 3);
       this.durability =  800;
     }
   }
-  class LongBow extends Stick {
+  class LongStick extends Stick {
     constructor(name, attack, durability, range) {
       super (name, attack, durability, range);
       this.name = 'Посох бури';
@@ -130,34 +130,42 @@ class StudentLog {
     getName() {
         return this.name;
     }
-    addGrade(grade, subject) {
-        this.grade = [grade];
-        if ((this.grade.length < 1) || (this.grade.length > 5)) {
-            return "Ошибка" && this.grade.length;
-        }  return this.grade.length;
-    }
-    getAverageBySubject(subject) {
-        this.subject = subject;
-        let sum = 0;
-        if (this.subject === undefined) {
-            return 0;
-        }   for (i = 0; i < this.grade.length; i++) {
-            sum += this.grade[i];
-        }   return sum / this.grade.length;
-    }
     
-    getToralAverage(){
-        let average  = 0;
-        if (this.marks.length === 0) {
-          return 0;
-        }
-          this.marks.forEach(function(item, i) {
-          average += (item.mark.reduce(function(sum, current){
-          return sum + current })) / item.mark.length;
-        })
-          return average / this.marks.length; 
-          }
-        }
-       
-    
+  addGrade(grade, subject) { 
 
+    if ((isNaN(parseInt(grade)) || (grade > 5) || (grade === 0))) {
+       console.log(`Вы пытались поставить оценку\'${grade}\'по предмету \'${subject}\'. Допускаются только числа от 1 до 5.`);
+       return this.marks;
+     } 
+       if (!this.marks.some((item, i) => this.marks[i].subjectName === subject)) {
+         this.marks.push({subjectName: subject, mark: [grade]}); 
+       } else {
+         let index = this.marks.findIndex(markIndex => markIndex.subjectName === subject);
+         this.marks[index].mark.push(grade);
+       }
+      return this.marks;
+   }
+ 
+   getAverageBySubject(subject) {
+     let index = this.marks.findIndex(markIndex => markIndex.subjectName === subject);
+     if (index === -1) {
+       return 0;
+     } else {
+       let averageBySubject = 0;       
+       return averageBySubject = (this.marks[index].mark.reduce(function(sum, current){
+         return sum + current })) / this.marks[index].mark.length;  
+     }
+   }
+ 
+   getToralAverage(){
+     let average  = 0;
+     if (this.marks.length === 0) {
+       return 0;
+     }
+     this.marks.forEach(function(item, i) {
+       average += (item.mark.reduce(function(sum, current){
+         return sum + current })) / item.mark.length;
+       })
+     return average / this.marks.length; 
+   }
+ }
